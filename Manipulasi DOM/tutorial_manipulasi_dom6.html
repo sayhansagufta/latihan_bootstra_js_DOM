@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bubbling</title>
+    <style>
+      body div {
+        width: 60%;
+        margin: 8px;
+        padding: 5px;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div onclick="alert('Elemen Langit')" align="center">
+      Langit
+      <div onclick="alert('Elemen Luar')" align="center">
+        Luar
+        <div onclick="alert('Elemen Tengah')" align="center">
+          Tengah
+          <div onclick="alert('Elemen Dalam')" align="center">Dalam</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

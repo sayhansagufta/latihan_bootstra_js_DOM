@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Capturing</title>
+    <style>
+      body div {
+        width: 60%;
+        margin: 8px;
+        padding: 5px;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div align="center" id="langit">
+      Langit
+      <div align="center" id="luar">
+        Luar
+        <div align="center" id="tengah">
+          Tengah
+          <div align="center" id="dalam">Dalam</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const divs = document.getElementsByTagName("div");
+      for (let el of divs) {
+        el.addEventListener(
+          "click",
+          function () {
+            alert("Elemen " + el.getAttribute("id").toUpperCase());
+          },
+          true
+        );
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link rel="stylesheet" href="app.css" />
+    <title>Bootstrap Button</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Hello, There!</h1>
+      <button type="button" class="btn btn-primary">Primary</button>
+      <button type="button" class="btn btn-outline-danger">Danger</button>
+      <button type="button" class="btn btn-primary btn-lg">Large button</button>
+      <button type="button" class="btn btn-primary btn-sm">Small button</button>
+      <button type="button" class="btn btn-outline-primary" disabled>Primary button</button>
+      <input class="btn btn-primary" type="button" value="Input" />
+      <input class="btn btn-primary" type="submit" value="Submit" />
+      <input class="btn btn-primary" type="reset" value="Reset" />
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate minima expedita voluptatem ipsa vero consectetur qui quis maxime similique magni magnam, veniam fugiat eos sequi, sit totam enim omnis quod? Veritatis soluta
+        deleniti delectus eveniet, iure omnis perspiciatis ab at, amet nesciunt voluptatum eum laudantium similique est! Ut delectus voluptatem, omnis incidunt, numquam eius magni vel nisi quidem mollitia eaque. Illum vero doloremque aut
+        commodi, accusantium maiores eius hic excepturi nemo dolores aliquid animi dolorem, corporis numquam nesciunt quae natus a fugit obcaecati? Voluptates sit porro laboriosam maxime minus accusantium. Cum, facere. Voluptatum, vero amet
+        nesciunt aperiam itaque, sapiente commodi enim dolores reprehenderit accusantium officia quia dignissimos, aut rerum laudantium eaque minima? Sunt quam repellendus ratione blanditiis nemo fuga voluptates.
+      </p>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="button">Button</button>
+        <button class="btn btn-success" type="submit">Button</button>
+      </div>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="button">Button</button>
+        <button class="btn btn-primary" type="button">Button</button>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script>
+      // alert BOM method
+      let message = "Hello World!";
+      alert("Halo, User!");
+      alert(message);
+      // prompt BOM Method
+      // 1. var PesanInput = menampilkan inputan user pada console
+      let PesanInput = prompt("Silahkan Masukkan Pesan...");
+      // 2. var PesanInput2 = menampilkan output string pada console
+      let PesanInput2 = prompt("Silahkan Masukkan Angka...");
+      // 3. var PesanInput3 = menampilkan output number pada console bisa menggunakan Number atau ParseInt
+      let PesanInput3 = prompt("Silahkan Masukkan Angka yang Anda Suka....");
+      let PesanInputConvertToNumber = parseInt(PesanInput3);
+      // memberikan value default pada prompt
+      let name = prompt("Silahkan Masukkan Nama Anda!", "John Doe!");
+      console.log(PesanInput);
+      console.log(typeof PesanInput2);
+      console.log(`Tipe data dari \`pesanInputConvertToNumber\` adalah ${typeof PesanInputConvertToNumber}`);
+      console.log(name);
+      console.log("Ini adalah Console log");
+      console.info("Ini adalah Console Info");
+      console.warn("Ini adalah Console Warn");
+      console.error("Ini adalah Console Error");
+    </script>
+  </body>
+</html>
