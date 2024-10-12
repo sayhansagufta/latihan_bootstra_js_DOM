@@ -13,6 +13,8 @@ const sessionAnswerField = document.getElementById("session-user-answer-field");
 const sessionUserWrongField = document.getElementById("session-user-wrong-answer-field");
 const sessionTrueAnswerField = document.getElementById("session-true-answer-field");
 const sessionUserAttemptsField = document.getElementById("session-user-attempts-amount-field");
+const sessionUserAnswerField = document.getElementById("session-user-answer-field");
+const sessionUserWrongAnswerField = document.getElementById("session-user-wrong-answer-field");
 
 // inisialisasi fungsi untuk menghasilkan jawaban permainan
 function getAnswer() {
@@ -134,5 +136,5 @@ destroyDataButton.addEventListener("click", function () {
   sessionStorage.removeItem(sessionUserIsPlayingKey);
   localStorage.removeItem(localTotalVictoryKey);
   localStorage.removeItem(localTotalMaximumAttemptsKey);
-  alert("Mohon me-refresh halaman ini kembali !");
+  alert("Mohon me-refresh halaman ini kembali");
 });
