@@ -1,5 +1,9 @@
 const todos = [];
 const RENDER_EVENT = "render-todo";
+// inisialisasi custom event dengan variabel SAVED_EVENT dengan nama = "saved-todo"
+const SAVED_EVENT = "saved-todo";
+// inisialisasi key local storage dengan variabel STORAGE_KEY dengan key = 'TODO_APPS'
+const STORAGE_KEY = "TODO_APPS";
 
 document.addEventListener("DOMContentLoaded", function () {
   const submitForm = document.getElementById("form");
@@ -7,7 +11,58 @@ document.addEventListener("DOMContentLoaded", function () {
     event.preventDefault();
     addTodo();
   });
+
+  // memanggil fungsi tersebut pada saat semua elemen HTML sudah selesai dimuat menjadi DOM.
+  if (isStorageExist()) {
+    loadDataFromStorage();
+  }
 });
+
+// membuat function untuk saveData()
+function saveData() {
+  // function untuk memastikan bahwa browser yang dipakai mendukung localStorage
+  // function isStorageExist() mengembalikan nilai boolean untuk menentukan apakah memang benar didukung atau tidak
+  if (isStorageExist()) {
+    // localStorage hanya menyimpan data berupa tipe data teks maka diperlukan konversi data object ke string agar data disimpan dengan menggunakan JSON.stringify() untuk mengonversi.
+    const parsed = JSON.stringify(todos);
+    // menyimpan data ke storage sesuai dengan key yang sudah ditentukan. Dalam hal ini key yang digunakan adalah "TODO_APPS" dalam variabel STORAGE_KEY
+    localStorage.setItem(STORAGE_KEY, parsed);
+    // untuk mempermudah debugging pada saat perubahan data, kita akan memanggil sebuah custom event baru yang bernama "saved-todo" dalam variabel SAVED_EVENT.
+    document.dispatchEvent(new Event(SAVED_EVENT));
+  }
+}
+
+// membuat function isStorageExist()
+function isStorageExist() {
+  if (typeof Storage === undefined) {
+    alert("Browser kamu tidak mendukung local storage");
+    return false;
+  }
+  return true;
+}
+
+document.addEventListener(SAVED_EVENT, function () {
+  // mengambil data dari localStorage dengan function getItem()
+  console.log(localStorage.getItem(STORAGE_KEY));
+});
+
+// membuat function ketika browser memuat data sehingga data tidak hilang di tampilan
+function loadDataFromStorage() {
+  // inisialisasi variabel serializedData
+  // mengambil data dari localStorage dengan function getItem dengan variabel STORAGE_KEY
+  const serializedData = localStorage.getItem(STORAGE_KEY);
+  // inisialisasi variabel data
+  // setelah data diambil dari localStorage dengan variabel serializedData dalam format teks JSON. kemudian variabel data memparse data JSON tadi menjadi sebuah objek.
+  let data = JSON.parse(serializedData);
+
+  if (data !== null) {
+    for (const todo of data) {
+      todos.push(todo);
+    }
+  }
+
+  document.dispatchEvent(new Event(RENDER_EVENT));
+}
 
 function addTodo() {
   const textTodo = document.getElementById("title").value;
@@ -24,6 +79,7 @@ function addTodo() {
   todos.push(todoObject);
 
   document.dispatchEvent(new Event(RENDER_EVENT));
+  saveData(); // menambahkan function saveData pada function addTodo
 }
 
 function generateID() {
@@ -109,6 +165,7 @@ function makeTodo(todoObject) {
 
     todoTarget.isCompleted = true;
     document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData(); // menambahkan function saveData pada function addTaskToCompleted
   }
 
   function findTodo(todoId) {
@@ -127,6 +184,7 @@ function makeTodo(todoObject) {
 
     todos.splice(todoTarget, 1);
     document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData(); // menambahkan function saveData pada function removeTaskFrommCompleted
   }
 
   function undoTaskFromCompleted(todoId) {
@@ -136,6 +194,7 @@ function makeTodo(todoObject) {
 
     todoTarget.isCompleted = false;
     document.dispatchEvent(new Event(RENDER_EVENT));
+    saveData(); // menambahkan function saveData pada function undoTaskFromCompleted
   }
 
   function findTodoIndex(todoId) {
